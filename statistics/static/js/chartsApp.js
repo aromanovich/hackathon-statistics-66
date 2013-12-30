@@ -51,7 +51,7 @@ $(function () {
                     {
                         name: 'Мальчики',
                         color: mColor,
-                        yy: sexData[0][1]
+                        y: sexData[0][1]
                     }
                 ]
             }]
@@ -79,7 +79,7 @@ $(function () {
                 text: 'в годах'
             },
             xAxis: {
-                categories: agesData.labels,
+                categories: agesData[0],
                 title: {
                     text: 'Возраст'
                 },
@@ -122,13 +122,9 @@ $(function () {
                 enabled: false
             },
             series: [{
-                name: 'Мальчики',
-                data: agesData.maleData,
+                name: 'All',
+                data: agesData[1],
                 color: mColor
-            }, {
-                name: 'Девочки',
-                data: agesData.femaleData,
-                color: wColor
             }]
         });
     
