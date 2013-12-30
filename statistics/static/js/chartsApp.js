@@ -399,10 +399,10 @@ String.prototype.capitalize=function(){
                 type: 'column'
             },
             title: {
-                text: 'Число сотрудников компании'
+                text: 'Стаж сотрудников компании'
             },
             subtitle: {
-                text: 'В людях'
+                text: 'В годах'
             },
             xAxis: {
                 categories: yearStartedWorkingData[1],

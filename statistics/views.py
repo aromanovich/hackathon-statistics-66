@@ -1,5 +1,6 @@
 # coding: utf-8
 import json
+import datetime
 
 from flask import request, redirect, url_for, render_template, flash
 
@@ -74,7 +75,7 @@ def get_ages():
     } for (stat, age) in q]
 
 
-def get_aggregated_data(column, value=None):
+def get_aggregated_data(column, value=None, reverse=False):
     """
     :type column: Statistics.*
     """
@@ -85,8 +86,13 @@ def get_aggregated_data(column, value=None):
     ).order_by(
         value
     ).with_entities(db.func.count(Statistics.id), value)
-    
-    return zip(*data.all())
+
+    rv = zip(*data.all())
+    if reverse:
+        rv = (
+            list(reversed(rv[0])),
+            list(reversed(rv[1])))
+    return rv
 
 
 @app.route('/charts/')
@@ -95,12 +101,15 @@ def charts():
     weights = get_statistics(Statistics.weight)
     mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
     sex = get_aggregated_data(Statistics.sex)
-    year_started_working = get_aggregated_data(Statistics.year_started_working)
+    year_started_working = get_aggregated_data(Statistics.year_started_working, reverse=True)
     eye_colors = get_aggregated_data(Statistics.eye_color)
     mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
     foot_sizes = get_statistics(Statistics.foot_size)
     ages = get_ages()
 
+    year_started_working = (
+        year_started_working[0],
+        [datetime.datetime.today().year - year + 1 for year in year_started_working[1]])
 
     return render_template(
         'charts.html',
