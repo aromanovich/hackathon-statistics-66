@@ -133,15 +133,6 @@ $(function () {
         });
     
 
-        var dataMS = [];
-        var dataWS = [];
-        var labelsS = [];
-        for (i=150;i<210;i++)
-            {
-                labelsS.push(i);
-                dataMS.push(parseInt(Math.random()*30));
-                dataWS.push(parseInt(Math.random()*30));
-            } 
 
         $('#container3').highcharts({
             chart: {
@@ -154,7 +145,7 @@ $(function () {
                 text: 'в сантиметрах'
             },
             xAxis: {
-                categories: labelsS,
+                categories: heightsData.labels,
                 title: {
                     text: 'Рост'
                 },
@@ -199,11 +190,11 @@ $(function () {
             },
             series: [{
                 name: 'Мальчики',
-                data: dataMS,
+                data: heightsData.maleData,
                 color: mColor
             }, {
                 name: 'Девочки',
-                data: dataWS,
+                data: heightsData.femaleData,
                 color: wColor
             }]
         });
