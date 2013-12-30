@@ -39,17 +39,7 @@ $(function () {
         aLabels.push(t.y);
         return t;
     });
-        // data: [{
-        //     name: 'Point 1',
-        //     color: '#00FF00',
-        //     y: 0
-        // }, {
-        //     name: 'Point 2',
-        //     color: '#FF00FF',
-        //     y: 5
-        // }]
         
-        // Build the chart
         $('#container').highcharts({
             chart: {
                 plotBackgroundColor: null,
@@ -465,7 +455,40 @@ $(function () {
             }]
         });
 
-    
+        var mobile=_.object(mobilePlatformsData[1],mobilePlatformsData[0]);
+
+        $('#container8').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: 'Телефон'
+            },
+            tooltip: {
+                pointFormat: '{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: false
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Телефон: ',
+                data: mobile
+            }]
+        });
+
     });
     
 });
