@@ -13,7 +13,7 @@ def index():
         statistics = Statistics()
         form.populate_obj(statistics)
         db.session.add(statistics)
-        # db.session.commit()
+        db.session.commit()
         return redirect(url_for('.finish'))
 
     return render_template('survey.html', form=form)
