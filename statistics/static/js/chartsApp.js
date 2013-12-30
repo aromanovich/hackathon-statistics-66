@@ -484,6 +484,21 @@ String.prototype.capitalize=function(){
             }]
         });
 
+        $.get('/static/data/first_names.json', function(names) {
+            var $container = $('#names tbody'),
+              child;
+
+              for (var i=0; i<names.length; i++) {
+                child ='<tr class="' + (names[i].sex ? 'man' : 'woman') + '">\
+                <td>' + names[i].name + '</td>\
+                <td>' + names[i].count + '</td>\
+              </tr>';
+              $container.append(child);
+            }
+          });
+
     });
+
+
     
 });
