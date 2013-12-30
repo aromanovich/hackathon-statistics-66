@@ -26,7 +26,7 @@ def load_random_fixtures(n):
             weight=random.randint(45, 120),
             foot_size=random.randint(30, 50),
             eye_color=random.choice([
-                'blue'
+                'blue',
                 'green',
                 'hazel',
                 'gray',
