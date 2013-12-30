@@ -19,6 +19,11 @@ def index():
     return render_template('survey.html', form=form)
 
 
+@app.route('/charts/')
+def charts():
+    return render_template('charts.html')
+
+
 @app.route('/finish/')
 def finish():
     return render_template('thanks.html')
