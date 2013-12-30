@@ -18,6 +18,9 @@
         <p>
         Имя и фамилию мы не покажем нигде. Обещаем.
         </p>
+        <p>
+        Если вы просто хотите посмотреть результаты &mdash; вам <a href="{{ url_for('.charts') }}">сюда</a>.
+        </p>
         <form method="POST" class="form" role="form">
           {{ form.hidden_tag() }}
           {{ form_field(form.first_name) }}
