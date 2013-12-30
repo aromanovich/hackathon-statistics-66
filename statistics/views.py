@@ -91,6 +91,8 @@ def charts():
     sex = get_aggregated_data(Statistics.sex)
     year_started_working = get_aggregated_data(Statistics.year_started_working)
     eye_colors = get_aggregated_data(Statistics.eye_color)
+    mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
+    foot_sizes = get_statistics(Statistics.foot_size)
     ages = get_ages()
 
 
@@ -102,6 +104,7 @@ def charts():
         eye_colors=json.dumps(eye_colors),
         sex=json.dumps(sex),
         year_started_working=json.dumps(year_started_working),
+        foot_sizes=json.dumps(foot_sizes),
         ages=json.dumps(ages),
     )
 

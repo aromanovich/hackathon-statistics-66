@@ -6,16 +6,11 @@
   <link rel="stylesheet" href="/static/css/datepicker.css">
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/js/bootstrap-datepicker.js"></script>
+  <script src="/static/js/bootstrap-datepicker.ru.js"></script>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h4>Привет!</h4>
-        <p>В преддверии Нового года мы решили провести небольшой опрос и на основе
-        собранных данных построить кучу интересных и не очень графиков.
-        </p>
-        <p>
-        Мы нигде не покажем твою имя и фамилию.
-        </p>
         <form method="POST" class="form" role="form">
           {{ form.hidden_tag() }}
           {{ form_field(form.first_name) }}
@@ -34,8 +29,11 @@
   </div>
   <script>
     $('#birthdate').datepicker({
-      format: 'yyyy-mm-dd',
-      viewMode: 2,
+      format: "yyyy-mm-dd",
+      endDate: "1998-12-31",
+      startView: 2,
+      language: "ru",
+      autoclose: true
     });
   </script>
 {% endblock %}
