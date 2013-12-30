@@ -12,6 +12,22 @@ $(function () {
     var cProgrammer = '#ff0000';
 
     $(document).ready(function () {
+
+        heightsData = _.map(heightsData, function(o) {
+            var t = {};
+            t.color = (o.sex==='m')?mColor:wColor;
+            t.y = o.data
+            return t;
+        })
+        // data: [{
+        //     name: 'Point 1',
+        //     color: '#00FF00',
+        //     y: 0
+        // }, {
+        //     name: 'Point 2',
+        //     color: '#FF00FF',
+        //     y: 5
+        // }]
         
         // Build the chart
         $('#container').highcharts({
@@ -185,13 +201,7 @@ $(function () {
                 enabled: false
             },
             series: [{
-                name: 'Мальчики',
-                data: heightsData.maleData,
-                color: mColor
-            }, {
-                name: 'Девочки',
-                data: heightsData.femaleData,
-                color: wColor
+                data: heightsData
             }]
         });
 
