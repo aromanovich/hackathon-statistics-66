@@ -169,7 +169,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Число сотрудников',
+                    text: 'Рост',
                     //align: 'high'
                 },
                 labels: {
@@ -177,6 +177,7 @@ $(function () {
                 }
             },
             tooltip: {
+                enabled: false;
 //                formatter: function() {
 //                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
 //                }
@@ -194,17 +195,9 @@ $(function () {
                     shadow: false,
                 }
             },
-  //          legend: {
-  //              layout: 'vertical',
-  //              align: 'right',
-  //              verticalAlign: 'top',
-  //              x: -40,
-  //              y: 100,
-  //              floating: true,
-  //              borderWidth: 1,
-  //              backgroundColor: '#FFFFFF',
-  //              shadow: true
-  //          },
+           legend: {
+                enabled: false
+           },
             credits: {
                 enabled: false
             },
