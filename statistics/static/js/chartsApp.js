@@ -1,41 +1,477 @@
-var hasPenis = [
-    {
-        value: 65,
-        color:"#F38630"
-    },
-    {
-        value : 55,
-        color : "#E0E4CC"
-    }
-]
+$(function () {
+    var chart;
 
-var i=15;
-var dataM = [];
-var dataW = [];
-var labels = [];
-for (i=15;i<100;i++)
-    {
-        labels.push(i);
-        dataM.push(Math.random(20));
-        dataW.push(Math.random(20));
-    }    
+    var wColor = "#ff66cc";
+    var mColor ="#006699";
+    
+    var cBlue = '#42aaff';
+    var cGreen = '#34c924';
+    var cBrown = '#b7410e';
+    var cGray = '#808080';
+    var cBlack = '#000000';
+    var cProgrammer = '#ff0000';
 
-var isOld = {
-            labels : labels,
-            datasets : [
+    $(document).ready(function () {
+        
+        // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: 'Пол'
+            },
+            tooltip: {
+                pointFormat: '{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: false
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Пол: ',
+                data: [
+                    {
+                        name: 'Девочки',
+                        color: wColor,
+                        y: 55
+                        },
+                    {
+                        name: 'Мальчики',
+                        color: mColor,
+                        y: 70
+                    }
+                ]
+            }]
+        });
+
+        var i=15;
+        var dataM = [];
+        var dataW = [];
+        var labels = [];
+        for (i=15;i<100;i++)
+            {
+                labels.push(i);
+                dataM.push(parseInt(Math.random()*20));
+                dataW.push(parseInt(Math.random()*20));
+            }     
+
+         $('#container2').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Возраст'
+            },
+            subtitle: {
+                text: 'в годах'
+            },
+            xAxis: {
+                categories: labels,
+                title: {
+                    text: 'Возраст'
+                },
+                tickInterval: 5
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Число сотрудников',
+                    //align: 'high'
+                },
+                labels: {
+                    //overflow: 'justify'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return 'Возраст: '+ this.x + ' <br> '+ this.series.name + ': '+ this.y;
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Мальчики',
+                data: dataM,
+                color: mColor
+            }, {
+                name: 'Девочки',
+                data: dataW,
+                color: wColor
+            }]
+        });
+    
+
+        var dataMS = [];
+        var dataWS = [];
+        var labelsS = [];
+        for (i=150;i<210;i++)
+            {
+                labelsS.push(i);
+                dataMS.push(parseInt(Math.random()*30));
+                dataWS.push(parseInt(Math.random()*30));
+            } 
+
+        $('#container3').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Рост'
+            },
+            subtitle: {
+                text: 'в сантиметрах'
+            },
+            xAxis: {
+                categories: labelsS,
+                title: {
+                    text: 'Рост'
+                },
+                tickInterval: 5
+
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Число сотрудников',
+                    //align: 'high'
+                },
+                labels: {
+                    //overflow: 'justify'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Мальчики',
+                data: dataMS,
+                color: mColor
+            }, {
+                name: 'Девочки',
+                data: dataWS,
+                color: wColor
+            }]
+        });
+
+        var dataMF = [];
+        var dataWF = [];
+        var labelsF = [];
+        for (i=30;i<50;i++)
+            {
+                labelsF.push(i);
+                dataMF.push(parseInt(Math.random()*50));
+                dataWF.push(parseInt(Math.random()*50));
+            }
+
+        $('#container4').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Размер ноги'
+            },
+            subtitle: {
+                text: 'в размерах'
+            },
+            xAxis: {
+                categories: labelsF,
+                title: {
+                    text: 'Размер ноги'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Число сотрудников',
+                    //align: 'high'
+                },
+                labels: {
+                    //overflow: 'justify'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return 'Размер ноги: '+ this.x + ' <br> '+ this.series.name + ': '+ this.y;
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Мальчики',
+                data: dataMF,
+                color: mColor
+            }, {
+                name: 'Девочки',
+                data: dataWF,
+                color: wColor
+            }]
+        });
+
+        var dataMM = [];
+        var dataWM = [];
+        var labelsM = [];
+        for (i=30;i<200;i++)
+            {
+                labelsM.push(i);
+                dataMM.push(parseInt(Math.random()*50));
+                dataWM.push(parseInt(Math.random()*50));
+            }
+
+        $('#container7').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Масса сотрудников компании'
+            },
+            subtitle: {
+                text: 'в килограммах'
+            },
+            xAxis: {
+                categories: labelsM,
+                title: {
+                    text: 'Масса'
+                },
+                tickInterval: 5
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Число сотрудников',
+                    //align: 'high'
+                },
+                labels: {
+                    //overflow: 'justify'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return 'Масса: '+ this.x + ' кг <br> '+ this.series.name + ': '+ this.y;
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Мальчики',
+                data: dataMM,
+                color: mColor
+            }, {
+                name: 'Девочки',
+                data: dataWM,
+                color: wColor
+            }]
+        });
+
+
+
+        $('#container5').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: 'Цвет глаз:'
+            },
+            tooltip: {
+                pointFormat: '{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: false
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Цвет глаз: ',
+                data: [
+
                 {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    data : dataM
+                    name: 'Голубой',
+                    color: cBlue,
+                    y: 30
                 },
                 {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    data : dataW
+                    name: 'Серый',
+                    color: cGray,
+                    y: 40
+                },
+                {
+                    name: 'Зелёный',
+                    color: cGreen,
+                    y: 60
+                },
+                {
+                    name: 'Чёрный',
+                    color: cBlack,
+                    y: 10
+                },
+                {
+                    name: 'Карий',
+                    color: cBrown,
+                    y: 20
+                },
+                {
+                    name: 'Красный',
+                    color: cProgrammer,
+                    y: 100
+                },
+                
+                ]
+            }]
+        });
+   
+        $('#container6').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Число сотрудников компании'
+            },
+            subtitle: {
+                text: 'В людях'
+            },
+            xAxis: {
+                categories: ['2006','2007','2008','2009','2010','2011','2012','2013','2014',],
+                title: {
+                    text: null
                 }
-            ]
-            
-        }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Число сотрудников',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Число сотрудников',
+                data: [10,12,25,35,55,56,70,102,201],
+                color: mColor
+            }]
+        });
 
-var myLine = new Chart(document.getElementById("hasPenis").getContext("2d")).Pie(hasPenis);    
-var myLine2 = new Chart(document.getElementById("isOld").getContext("2d")).Bar(isOld);
+    
+    });
+    
+});
