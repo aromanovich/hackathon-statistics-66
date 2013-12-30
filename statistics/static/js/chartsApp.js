@@ -159,7 +159,9 @@ String.prototype.capitalize=function(){
                 }
             },
             tooltip: {
-                enabled: false
+                formatter: function() {
+                    return 'Возраст: '+ this.y;
+                }
             },
             plotOptions: {
                 bar: {
@@ -217,10 +219,9 @@ String.prototype.capitalize=function(){
                 }
             },
             tooltip: {
-                enabled: false
-//                formatter: function() {
-//                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
-//                }
+                formatter: function() {
+                    return 'Рост: '+ this.y + ' см';
+                }
             },
             plotOptions: {
                 bar: {
@@ -280,7 +281,9 @@ String.prototype.capitalize=function(){
                 }
             },
             tooltip: {
-               enabled: false
+               formatter: function() {
+                    return 'Масса: '+ this.y + ' кг';
+                }
             },
             plotOptions: {
                 bar: {
@@ -335,7 +338,9 @@ String.prototype.capitalize=function(){
                 }
             },
             tooltip: {
-               enabled: false
+               formatter: function() {
+                    return 'Размер ноги: '+ this.y;
+                }
             },
             plotOptions: {
                 bar: {
