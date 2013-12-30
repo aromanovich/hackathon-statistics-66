@@ -15,7 +15,7 @@ class SurveyForm(wtf.Form):
 
     last_name = wtforms.TextField(u'Фамилия', [required, validators.Length(max=100)])
 
-    birthdate = wtforms.DateField(u'Дата рождения', description=u'в формате 1990-08-14')
+    birthdate = wtforms.DateField(u'Дата рождения')
 
     height = wtforms.IntegerField(u'Рост', [
         required,
@@ -30,7 +30,7 @@ class SurveyForm(wtf.Form):
     foot_size = wtforms.IntegerField(u'Размер ноги', [
         required,
         positive_number,
-    ], description=u'например, 43')
+    ], description=u'по европейской шкале (например, 43)')
 
     year_started_working = wtforms.IntegerField(u'Год начала работы в компании', [
         required,

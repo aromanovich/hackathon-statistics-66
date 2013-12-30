@@ -1,6 +1,7 @@
+# coding: utf-8
 import json
 
-from flask import request, redirect, url_for, render_template
+from flask import request, redirect, url_for, render_template, flash
 
 from . import app, db
 from .models import Statistics
@@ -98,4 +99,5 @@ def charts():
 
 @app.route('/finish/')
 def finish():
-    return render_template('thanks.html')
+    flash(u'Спасибо за заполнение анкеты!')
+    return redirect('.charts')
