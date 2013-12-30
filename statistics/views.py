@@ -75,7 +75,7 @@ def get_aggregated_data(column, value=None):
 @app.route('/charts/')
 def charts():
     heights = get_statistics(Statistics.height)
-    weights = get_aggregated_by_sex_data(Statistics.weight)
+    weights = get_statistics(Statistics.weight)
     mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
     sex = get_aggregated_data(Statistics.sex)
     year_started_working = get_aggregated_data(Statistics.year_started_working)
