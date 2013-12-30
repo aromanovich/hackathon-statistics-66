@@ -39,7 +39,11 @@ def get_heights():
     for label in labels:
         female_data.append(female_dict.get(label, 0))
         male_data.append(male_dict.get(label, 0))
-    return (labels, female_data, male_data)
+    return {
+        'labels': labels,
+        'femaleData': female_data,
+        'maleData': male_data,
+    }
 
 
 @app.route('/charts/')
