@@ -39,7 +39,7 @@ String.prototype.capitalize=function(){
 
 
     var eye=_.zip(eyeColorsData[1],eyeColorsData[0]);
-        mobile = _.map(mobile, function(o){
+        eye = _.map(eye, function(o){
             var t={};
             t.name=colsNames[o[0]];
             t.color=cols[o[0]];
@@ -247,56 +247,7 @@ String.prototype.capitalize=function(){
 
    
 
-        $('#container4').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Размер ноги'
-            },
-            subtitle: {
-                text: 'в размерах'
-            },
-            xAxis: {
-                categories: fLabels,
-                title: {
-                    text: 'Размер ноги'
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Размер ноги',
-                    //align: 'high'
-                },
-                labels: {
-                    //overflow: 'justify'
-                }
-            },
-            tooltip: {
-                enabled: false
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                },
-                column: {
-                    pointPadding: 0,
-                    borderWidth: 0,
-                    groupPadding: 0,
-                    shadow: false,
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            credits: {
-                enabled: false
-            },
-            series: footSizesData
-        });
+        
 
 
         $('#container7').highcharts({
@@ -353,7 +304,59 @@ String.prototype.capitalize=function(){
             }]
         });
 
-
+        $('#container4').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Размер ноги'
+            },
+            subtitle: {
+                text: 'в размерах'
+            },
+            xAxis: {
+                categories: fLabels,
+                title: {
+                    text: 'Размер ноги'
+                },
+                tickInterval: 1
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Размер ноги',
+                    //align: 'high'
+                },
+                labels: {
+                    //overflow: 'justify'
+                }
+            },
+            tooltip: {
+               enabled: false
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                },
+                column: {
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false,
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                data: footSizesData
+            }]
+        });
 
         $('#container5').highcharts({
             chart: {
