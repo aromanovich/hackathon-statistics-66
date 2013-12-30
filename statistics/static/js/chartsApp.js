@@ -169,9 +169,10 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
@@ -229,9 +230,10 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
+                    borderColor: '#cccccc'
                 }
             },
            legend: {
@@ -288,9 +290,10 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
@@ -342,9 +345,10 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
@@ -427,7 +431,7 @@ String.prototype.capitalize=function(){
                 }
             },
             legend: {
-                
+                enabled: false
             },
             credits: {
                 enabled: false
