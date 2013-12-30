@@ -15,9 +15,9 @@ var dataW = [];
 var labels = [];
 for (i=15;i<100;i++)
     {
-        labels[] = i;
-        dataW[] = Math.random(20);
-        dataM[] = Math.random(20);
+        labels.push(i);
+        dataM.push(Math.random(20));
+        dataW.push(Math.random(20));
     }    
 
 var isOld = {
