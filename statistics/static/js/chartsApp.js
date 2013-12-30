@@ -172,7 +172,7 @@ String.prototype.capitalize=function(){
                     borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
-                    borderColor: '#999999'
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
@@ -233,7 +233,7 @@ String.prototype.capitalize=function(){
                     borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
-                    borderColor: '#999999'
+                    borderColor: '#cccccc'
                 }
             },
            legend: {
@@ -293,7 +293,7 @@ String.prototype.capitalize=function(){
                     borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
-                    borderColor: '#999999'
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
@@ -348,7 +348,7 @@ String.prototype.capitalize=function(){
                     borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
-                    borderColor: '#999999'
+                    borderColor: '#cccccc'
                 }
             },
             legend: {
