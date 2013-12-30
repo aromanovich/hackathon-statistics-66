@@ -1,0 +1,1 @@
+var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);    
