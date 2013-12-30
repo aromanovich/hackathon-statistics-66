@@ -15,3 +15,6 @@ class Statistics(db.Model):
     eye_color = db.Column(db.String(1000))
     birthdate = db.Column(db.Date)
     year_started_working = db.Column(db.Integer)
+    eye_color = db.Column(db.String(1000))
+    mobile_platform = db.Column(db.String(1000))
+    sex = db.Column(db.String(1))

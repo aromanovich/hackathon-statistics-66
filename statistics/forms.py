@@ -55,4 +55,13 @@ class SurveyForm(wtf.Form):
             ('red', u'Красный'),
         ])
 
+    mobile_platform = wtforms.SelectField(
+        u'Телефон', [required],
+        choices=[
+            ('android', u'Android'),
+            ('apple', u'Apple'),
+            ('windows', u'Windows Phone'),
+            ('other', u'Другой'),
+        ])
+
     submit = wtforms.SubmitField(u'Готово')
