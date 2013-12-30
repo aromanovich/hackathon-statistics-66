@@ -1,13 +1,25 @@
 {% extends '_base.html' %}
 
-{% from '_utils.html' import quick_form %}
+{% from '_utils.html' import form_field %}
 
 {% block body %}
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h4>Привет!</h4>
-        {{ quick_form(form) }}
+        <form method="POST" class="form" role="form">
+          {{ form.hidden_tag() }}
+          {{ form_field(form.first_name) }}
+          {{ form_field(form.last_name) }}
+          {{ form_field(form.birthdate) }}
+          {{ form_field(form.height) }}
+          {{ form_field(form.weight) }}
+          {{ form_field(form.foot_size) }}
+          {{ form_field(form.year_started_working) }}
+          {{ form_field(form.sex) }}
+          {{ form_field(form.eye_color) }}
+          {{ form_field(form.submit) }}
+        </form>
       </div>
     </div>
   </div>
