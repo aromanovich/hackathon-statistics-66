@@ -319,7 +319,7 @@ String.prototype.capitalize=function(){
                 title: {
                     text: 'Размер ноги'
                 },
-                tickInterval: 1
+                tickInterval: 5
             },
             yAxis: {
                 min: 0,
