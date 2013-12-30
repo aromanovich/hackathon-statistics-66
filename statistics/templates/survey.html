@@ -1,5 +1,8 @@
 {% extends '_base.html' %}
 
+{% from '_utils.html' import quick_form %}
+
 {% block body %}
-  Привет!
+  <h4>Привет!</h4>
+  {{ quick_form(form) }}
 {% endblock %}
