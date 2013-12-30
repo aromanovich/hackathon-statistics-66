@@ -22,7 +22,7 @@ def index():
                   u'либо что-то пошло не так.', category='warning')
         else:
             flash(u'Спасибо за заполнение анкеты!', category='success')
-            return redirect(url_for('.charts'))
+            return redirect('/charts/')
 
     return render_template('survey.html', form=form)
 
