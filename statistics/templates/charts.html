@@ -12,16 +12,6 @@ var eyeColorsData = {{ eye_colors|safe }};
 var footSizesData = {{ foot_sizes|safe }};
 </script>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <p>
-      {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %}
-    </p>
-  {% endif %}
-{% endwith %}
-
 <div id="container" style="width: 800px; height: 400px; margin: 30px auto"></div>
 
 <div id="container2" style="width: 800px; height: 600px; margin: 30px auto"></div>

@@ -15,9 +15,14 @@ def index():
         statistics = Statistics()
         form.populate_obj(statistics)
         db.session.add(statistics)
-        db.session.commit()
-        flash(u'Спасибо за заполнение анкеты!', category='success')
-        return redirect(url_for('.charts'))
+        try:
+            db.session.commit()
+        except:
+            flash(u'Упс. Вы уже или заполняли анкету, '
+                  u'либо что-то пошло не так.', category='warning')
+        else:
+            flash(u'Спасибо за заполнение анкеты!', category='success')
+            return redirect(url_for('.charts'))
 
     return render_template('survey.html', form=form)
 
