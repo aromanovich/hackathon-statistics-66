@@ -46,12 +46,12 @@ $(function () {
                     {
                         name: 'Девочки',
                         color: wColor,
-                        y: 55
+                        y: sexData[0][0]
                         },
                     {
                         name: 'Мальчики',
                         color: mColor,
-                        y: 70
+                        y: sexData[0][1]
                     }
                 ]
             }]
@@ -79,7 +79,7 @@ $(function () {
                 text: 'в годах'
             },
             xAxis: {
-                categories: labels,
+                categories: agesData[0],
                 title: {
                     text: 'Возраст'
                 },
@@ -122,13 +122,9 @@ $(function () {
                 enabled: false
             },
             series: [{
-                name: 'Мальчики',
-                data: dataM,
+                name: 'All',
+                data: agesData[1],
                 color: mColor
-            }, {
-                name: 'Девочки',
-                data: dataW,
-                color: wColor
             }]
         });
     
@@ -293,7 +289,7 @@ $(function () {
                 text: 'в килограммах'
             },
             xAxis: {
-                categories: labelsM,
+                categories: weightsData.labels,
                 title: {
                     text: 'Масса'
                 },
@@ -337,11 +333,11 @@ $(function () {
             },
             series: [{
                 name: 'Мальчики',
-                data: dataMM,
+                data: weightsData.maleData,
                 color: mColor
             }, {
                 name: 'Девочки',
-                data: dataWM,
+                data: weightsData.femaleData,
                 color: wColor
             }]
         });
