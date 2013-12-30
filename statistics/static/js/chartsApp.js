@@ -30,6 +30,15 @@ $(function () {
         wLabels.push(t.y);
         return t;
     });
+
+    var aLabels=[]; 
+    agesData = _.map(agesData, function(o) {
+        var t = {};
+        t.color = (o.sex==='m')?mColor:wColor;
+        t.y = o.data;
+        aLabels.push(t.y);
+        return t;
+    });
         // data: [{
         //     name: 'Point 1',
         //     color: '#00FF00',
@@ -106,7 +115,7 @@ $(function () {
                 text: 'в годах'
             },
             xAxis: {
-                categories: agesData[0],
+                categories: aLabels,
                 title: {
                     text: 'Возраст'
                 },
@@ -115,7 +124,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Число сотрудников',
+                    text: 'Возраст',
                     //align: 'high'
                 },
                 labels: {
@@ -123,9 +132,7 @@ $(function () {
                 }
             },
             tooltip: {
-                formatter: function() {
-                    return 'Возраст: '+ this.x + ' <br> '+ this.series.name + ': '+ this.y;
-                }
+                enabled: false
             },
             plotOptions: {
                 bar: {
@@ -135,23 +142,13 @@ $(function () {
                 }
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
+                enabled: false
             },
             credits: {
                 enabled: false
             },
             series: [{
-                name: 'All',
-                data: agesData[1],
-                color: mColor
+                data: agesData
             }]
         });
     
@@ -197,7 +194,7 @@ $(function () {
                         enabled: true
                     }
                 },
-        column: {
+                column: {
                     pointPadding: 0,
                     borderWidth: 0,
                     groupPadding: 0,
@@ -318,7 +315,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Число сотрудников',
+                    text: 'Масса',
                     //align: 'high'
                 },
                 labels: {
@@ -333,6 +330,12 @@ $(function () {
                     dataLabels: {
                         enabled: true
                     }
+                },
+                column: {
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false,
                 }
             },
             legend: {
