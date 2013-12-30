@@ -1,4 +1,10 @@
 $(function () {
+
+
+String.prototype.capitalize=function(){
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
     var chart;
 
     var wColor = "#ff66cc";
@@ -455,7 +461,20 @@ $(function () {
             }]
         });
 
-        var mobile=_.object(mobilePlatformsData[1],mobilePlatformsData[0]);
+
+                    // {
+                    //     name: 'Девочки',
+                    //     color: wColor,
+                    //     y: sexData[0][0]
+                    //     },
+
+        var mobile=_.zip(mobilePlatformsData[1],mobilePlatformsData[0]);
+        mobile = _.map(mobile, function(o){
+            var t={};
+            t.name=o[0].capitalize();
+            t.y = o[1];
+            return t;
+        });
 
         $('#container8').highcharts({
             chart: {
