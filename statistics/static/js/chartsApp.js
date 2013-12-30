@@ -12,11 +12,13 @@ $(function () {
     var cProgrammer = '#ff0000';
 
     $(document).ready(function () {
-
+    
+    var hLabels=[]; 
         heightsData = _.map(heightsData, function(o) {
             var t = {};
             t.color = (o.sex==='m')?mColor:wColor;
-            t.y = o.data
+            t.y = o.data;
+            hLabels.push(t.y);
             return t;
         })
         // data: [{
@@ -157,7 +159,7 @@ $(function () {
                 text: 'в сантиметрах'
             },
             xAxis: {
-                categories: heightsData.labels,
+                categories: hLabels,
                 title: {
                     text: 'Рост'
                 },
@@ -175,28 +177,34 @@ $(function () {
                 }
             },
             tooltip: {
-                formatter: function() {
-                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
-                }
+//                formatter: function() {
+//                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
+//                }
             },
             plotOptions: {
                 bar: {
                     dataLabels: {
                         enabled: true
                     }
+                },
+        column: {
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false,
                 }
             },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
-            },
+  //          legend: {
+  //              layout: 'vertical',
+  //              align: 'right',
+  //              verticalAlign: 'top',
+  //              x: -40,
+  //              y: 100,
+  //              floating: true,
+  //              borderWidth: 1,
+  //              backgroundColor: '#FFFFFF',
+  //              shadow: true
+  //          },
             credits: {
                 enabled: false
             },
