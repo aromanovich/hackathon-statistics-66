@@ -1,6 +1,10 @@
 {% extends '_base.html' %}
 
 {% block body %}
+<center>
+<h4>Результаты</h4>
+<p>(всего человек человек прогосовало &mdash; {{ n }})</p>
+</center>
 <script>
 var heightsData = {{ heights|safe }};
 var weightsData = {{ weights|safe }};

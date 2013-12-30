@@ -104,6 +104,7 @@ def charts():
 
     return render_template(
         'charts.html',
+        n=Statistics.query.count(),
         heights=json.dumps(heights),
         weights=json.dumps(weights),
         mobile_platforms=json.dumps(mobile_platforms),
