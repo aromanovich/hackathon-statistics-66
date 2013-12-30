@@ -431,7 +431,7 @@ String.prototype.capitalize=function(){
                 }
             },
             legend: {
-                
+                enabled: false
             },
             credits: {
                 enabled: false
