@@ -46,6 +46,8 @@ String.prototype.capitalize=function(){
             t.y = o[1];
             return t;
         });
+
+    console.log(eye);    
     
     var hLabels=[]; 
     heightsData = _.map(heightsData, function(o) {
@@ -164,6 +166,12 @@ String.prototype.capitalize=function(){
                     dataLabels: {
                         enabled: true
                     }
+                },
+                column: {
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false,
                 }
             },
             legend: {
@@ -258,7 +266,7 @@ String.prototype.capitalize=function(){
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Число сотрудников',
+                    text: 'Размер ноги',
                     //align: 'high'
                 },
                 labels: {
