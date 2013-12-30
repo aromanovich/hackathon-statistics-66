@@ -1,6 +1,7 @@
+# coding: utf-8
 import json
 
-from flask import request, redirect, url_for, render_template
+from flask import request, redirect, url_for, render_template, flash
 
 from . import app, db
 from .models import Statistics
@@ -9,7 +10,6 @@ from .forms import SurveyForm
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    print request.form
     form = SurveyForm(request.form)
     if form.validate_on_submit():
         statistics = Statistics()
@@ -57,6 +57,17 @@ def get_statistics(column):
     } for s in q]
 
 
+def get_ages():
+    q = Statistics.query.order_by(Statistics.birthdate.desc()).with_entities(
+        Statistics, 
+        db.func.ceil(db.func.datediff(db.func.current_date(), Statistics.birthdate) / 365.25)
+    )
+    return [{
+        'sex': stat.sex,
+        'data': age,
+    } for (stat, age) in q]
+
+
 def get_aggregated_data(column, value=None):
     """
     :type column: Statistics.*
@@ -66,7 +77,7 @@ def get_aggregated_data(column, value=None):
     data = Statistics.query.group_by(
         column
     ).order_by(
-        column
+        value
     ).with_entities(db.func.count(Statistics.id), value)
     
     return zip(*data.all())
@@ -75,14 +86,12 @@ def get_aggregated_data(column, value=None):
 @app.route('/charts/')
 def charts():
     heights = get_statistics(Statistics.height)
-    weights = get_aggregated_by_sex_data(Statistics.weight)
+    weights = get_statistics(Statistics.weight)
     mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
     sex = get_aggregated_data(Statistics.sex)
     year_started_working = get_aggregated_data(Statistics.year_started_working)
-    ages = get_aggregated_data(
-        Statistics.birthdate,
-        value=db.func.datediff(db.func.current_date(), Statistics.birthdate) / 365.25)
-    ages[1] = map(int, ages[1])
+    eye_colors = get_aggregated_data(Statistics.eye_color)
+    ages = get_ages()
 
 
     return render_template(
@@ -90,6 +99,7 @@ def charts():
         heights=json.dumps(heights),
         weights=json.dumps(weights),
         mobile_platforms=json.dumps(mobile_platforms),
+        eye_colors=json.dumps(eye_colors),
         sex=json.dumps(sex),
         year_started_working=json.dumps(year_started_working),
         ages=json.dumps(ages),
@@ -98,4 +108,5 @@ def charts():
 
 @app.route('/finish/')
 def finish():
-    return render_template('thanks.html')
+    flash(u'Спасибо за заполнение анкеты!')
+    return redirect('.charts')
