@@ -14,7 +14,7 @@ app.jinja_env.globals['bootstrap_is_hidden_field'] = \
         lambda field: isinstance(field, wtforms.HiddenField)
 
 db = SQLAlchemy(app)
-migrate = Migrate(app)
+migrate = Migrate(app, db)
 
 
 # Регистрируем вьюхи после инициализации приложения:
