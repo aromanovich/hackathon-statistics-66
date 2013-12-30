@@ -49,11 +49,7 @@ def get_aggregated_by_sex_data(column):
     }
 
 def get_statistics(column):
-    q = Statistics.query.group_by(
-        column
-    ).order_by(
-        column
-    )
+    q = Statistics.query.order_by(column)
     
     return [{
         'sex': s.sex,
