@@ -1,1 +1,12 @@
-var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);    
+var hasPenis = [
+    {
+        value: 65,
+        color:"#F38630"
+    },
+    {
+        value : 55,
+        color : "#E0E4CC"
+    }
+]
+
+var myLine = new Chart(document.getElementById("hasPenis").getContext("2d")).Pie(hasPenis);    
