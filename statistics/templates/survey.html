@@ -5,7 +5,7 @@
 {% block body %}
   <link rel="stylesheet" href="/static/css/datepicker.css">
   <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/bootstrap-datepicker.min.js"></script>
+  <script src="/static/js/bootstrap-datepicker.js"></script>
   <script src="/static/js/bootstrap-datepicker.ru.js"></script>
   <div class="container">
     <div class="row">
@@ -15,7 +15,9 @@
           {{ form.hidden_tag() }}
           {{ form_field(form.first_name) }}
           {{ form_field(form.last_name) }}
-          {{ form_field(form.birthdate) }}
+          <div class="input-append date">
+            {{ form_field(form.birthdate) }}<span class="add-on"><i class="icon-th"></i>
+          </div>
           {{ form_field(form.height) }}
           {{ form_field(form.weight) }}
           {{ form_field(form.foot_size) }}
@@ -29,9 +31,11 @@
   </div>
   <script>
     $('#birthdate').datepicker({
-      format: 'yyyy-mm-dd',
-      viewMode: 2,
-      language: 'ru'
+      format: "yyyy-mm-dd",
+      endDate: "1998-12-31",
+      startView: 2,
+      language: "ru",
+      autoclose: true
     });
   </script>
 {% endblock %}
