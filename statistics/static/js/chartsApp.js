@@ -14,13 +14,22 @@ $(function () {
     $(document).ready(function () {
     
     var hLabels=[]; 
-        heightsData = _.map(heightsData, function(o) {
-            var t = {};
-            t.color = (o.sex==='m')?mColor:wColor;
-            t.y = o.data;
-            hLabels.push(t.y);
-            return t;
-        })
+    heightsData = _.map(heightsData, function(o) {
+        var t = {};
+        t.color = (o.sex==='m')?mColor:wColor;
+        t.y = o.data;
+        hLabels.push(t.y);
+        return t;
+    });
+
+    var wLabels=[]; 
+    weightsData = _.map(weightsData, function(o) {
+        var t = {};
+        t.color = (o.sex==='m')?mColor:wColor;
+        t.y = o.data;
+        wLabels.push(t.y);
+        return t;
+    });
         // data: [{
         //     name: 'Point 1',
         //     color: '#00FF00',
@@ -300,7 +309,7 @@ $(function () {
                 text: 'в килограммах'
             },
             xAxis: {
-                categories: weightsData.labels,
+                categories: wLabels,
                 title: {
                     text: 'Масса'
                 },
@@ -317,9 +326,7 @@ $(function () {
                 }
             },
             tooltip: {
-                formatter: function() {
-                    return 'Масса: '+ this.x + ' кг <br> '+ this.series.name + ': '+ this.y;
-                }
+               enabled: false
             },
             plotOptions: {
                 bar: {
@@ -329,27 +336,13 @@ $(function () {
                 }
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
+                enabled: false
             },
             credits: {
                 enabled: false
             },
             series: [{
-                name: 'Мальчики',
-                data: weightsData.maleData,
-                color: mColor
-            }, {
-                name: 'Девочки',
-                data: weightsData.femaleData,
-                color: wColor
+                data: weightsData
             }]
         });
 
@@ -431,7 +424,7 @@ $(function () {
                 text: 'В людях'
             },
             xAxis: {
-                categories: ['2006','2007','2008','2009','2010','2011','2012','2013','2014',],
+                categories: yearStartedWorkingData[1],
                 title: {
                     text: null
                 }
@@ -464,7 +457,7 @@ $(function () {
             },
             series: [{
                 name: 'Число сотрудников',
-                data: [10,12,25,35,55,56,70,102,201],
+                data: yearStartedWorkingData[0],
                 color: mColor
             }]
         });
