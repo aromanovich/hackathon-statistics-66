@@ -17,7 +17,35 @@ String.prototype.capitalize=function(){
     var cBlack = '#000000';
     var cProgrammer = '#ff0000';
 
+    var cols = {
+        black: cBlack,
+        green: cGreen,
+        gray: cGray,
+        blue: cBlue,
+        red: cProgrammer,
+        hazel: cBrown
+    }
+
+    var colsNames = {
+        black:  'Чёрные',
+        green: 'Зелёные',
+        gray: 'Серые',
+        blue: 'Голубые',
+        red: 'Красные )',
+        hazel: 'Карие'
+    }
+
     $(document).ready(function () {
+
+
+    var eye=_.zip(eyeColorsData[1],eyeColorsData[0]);
+        mobile = _.map(mobile, function(o){
+            var t={};
+            t.name=colsNames[o[0]];
+            t.color=cols[o[0]];
+            t.y = o[1];
+            return t;
+        });
     
     var hLabels=[]; 
     heightsData = _.map(heightsData, function(o) {
@@ -45,6 +73,17 @@ String.prototype.capitalize=function(){
         aLabels.push(t.y);
         return t;
     });
+
+    var fLabels=[]; 
+    footSizesData = _.map(footSizesData, function(o) {
+        var t = {};
+        t.color = (o.sex==='m')?mColor:wColor;
+        t.y = o.data;
+        fLabels.push(t.y);
+        return t;
+    });
+
+    
         
         $('#container').highcharts({
             chart: {
@@ -88,17 +127,7 @@ String.prototype.capitalize=function(){
                 ]
             }]
         });
-
-        var i=15;
-        var dataM = [];
-        var dataW = [];
-        var labels = [];
-        for (i=15;i<100;i++)
-            {
-                labels.push(i);
-                dataM.push(parseInt(Math.random()*20));
-                dataW.push(parseInt(Math.random()*20));
-            }     
+  
 
          $('#container2').highcharts({
             chart: {
@@ -208,15 +237,7 @@ String.prototype.capitalize=function(){
             }]
         });
 
-        var dataMF = [];
-        var dataWF = [];
-        var labelsF = [];
-        for (i=30;i<50;i++)
-            {
-                labelsF.push(i);
-                dataMF.push(parseInt(Math.random()*50));
-                dataWF.push(parseInt(Math.random()*50));
-            }
+   
 
         $('#container4').highcharts({
             chart: {
@@ -229,7 +250,7 @@ String.prototype.capitalize=function(){
                 text: 'в размерах'
             },
             xAxis: {
-                categories: labelsF,
+                categories: fLabels,
                 title: {
                     text: 'Размер ноги'
                 }
@@ -245,51 +266,30 @@ String.prototype.capitalize=function(){
                 }
             },
             tooltip: {
-                formatter: function() {
-                    return 'Размер ноги: '+ this.x + ' <br> '+ this.series.name + ': '+ this.y;
-                }
+                enabled: false
             },
             plotOptions: {
                 bar: {
                     dataLabels: {
                         enabled: true
                     }
+                },
+                column: {
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false,
                 }
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
+                enabled: false
             },
             credits: {
                 enabled: false
             },
-            series: [{
-                name: 'Мальчики',
-                data: dataMF,
-                color: mColor
-            }, {
-                name: 'Девочки',
-                data: dataWF,
-                color: wColor
-            }]
+            series: footSizesData
         });
 
-        var dataMM = [];
-        var dataWM = [];
-        var labelsM = [];
-        for (i=30;i<200;i++)
-            {
-                labelsM.push(i);
-                dataMM.push(parseInt(Math.random()*50));
-                dataWM.push(parseInt(Math.random()*50));
-            }
 
         $('#container7').highcharts({
             chart: {
@@ -375,40 +375,7 @@ String.prototype.capitalize=function(){
             series: [{
                 type: 'pie',
                 name: 'Цвет глаз: ',
-                data: [
-
-                {
-                    name: 'Голубой',
-                    color: cBlue,
-                    y: 30
-                },
-                {
-                    name: 'Серый',
-                    color: cGray,
-                    y: 40
-                },
-                {
-                    name: 'Зелёный',
-                    color: cGreen,
-                    y: 60
-                },
-                {
-                    name: 'Чёрный',
-                    color: cBlack,
-                    y: 10
-                },
-                {
-                    name: 'Карий',
-                    color: cBrown,
-                    y: 20
-                },
-                {
-                    name: 'Красный',
-                    color: cProgrammer,
-                    y: 100
-                },
-                
-                ]
+                data: eye
             }]
         });
    
@@ -461,12 +428,6 @@ String.prototype.capitalize=function(){
             }]
         });
 
-
-                    // {
-                    //     name: 'Девочки',
-                    //     color: wColor,
-                    //     y: sexData[0][0]
-                    //     },
 
         var mobile=_.zip(mobilePlatformsData[1],mobilePlatformsData[0]);
         mobile = _.map(mobile, function(o){
