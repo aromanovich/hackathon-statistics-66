@@ -169,7 +169,7 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
                     borderColor: '#999999'
@@ -230,7 +230,7 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
                     borderColor: '#999999'
@@ -290,7 +290,7 @@ String.prototype.capitalize=function(){
                 },
                 column: {
                     pointPadding: 0,
-                    borderWidth: 0,
+                    borderWidth: 0.5,
                     groupPadding: 0,
                     shadow: false,
                     borderColor: '#999999'
