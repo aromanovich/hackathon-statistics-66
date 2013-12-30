@@ -46,12 +46,12 @@ $(function () {
                     {
                         name: 'Девочки',
                         color: wColor,
-                        y: sexData[0][0];
+                        y: sexData[0][0]
                         },
                     {
                         name: 'Мальчики',
                         color: mColor,
-                        yy: sexData[0][1];
+                        yy: sexData[0][1]
                     }
                 ]
             }]
