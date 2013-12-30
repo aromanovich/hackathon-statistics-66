@@ -21,19 +21,22 @@ def index():
     return render_template('survey.html', form=form)
 
 
-def get_heights():
+def get_aggregated_by_sex_data(column):
+    """
+    :type column: Statistics.*
+    """
     q = Statistics.query.group_by(
-        Statistics.height
+        column
     ).order_by(
-        Statistics.height
-    ).with_entities(Statistics.height, db.func.count(Statistics.id))
+        column
+    ).with_entities(column, db.func.count(Statistics.id))
     
     female_dict = dict(q.filter_by(sex='f').all())
     male_dict = dict(q.filter_by(sex='m').all())
 
     labels = range(
-        db.session.query(db.func.min(Statistics.height)).scalar(),
-        db.session.query(db.func.max(Statistics.height)).scalar())
+        db.session.query(db.func.min(column)).scalar(),
+        db.session.query(db.func.max(column)).scalar())
     female_data = []
     male_data = []
     for label in labels:
@@ -46,12 +49,42 @@ def get_heights():
     }
 
 
+def get_aggregated_data(column, value=None):
+    """
+    :type column: Statistics.*
+    """
+    if value is None:
+        value = column
+    data = Statistics.query.group_by(
+        column
+    ).order_by(
+        column
+    ).with_entities(db.func.count(Statistics.id), value)
+    
+    return zip(*data.all())
+
+
 @app.route('/charts/')
 def charts():
-    heights = get_heights()
+    heights = get_aggregated_by_sex_data(Statistics.height)
+    weights = get_aggregated_by_sex_data(Statistics.weight)
+    mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
+    sex = get_aggregated_data(Statistics.sex)
+    year_started_working = get_aggregated_data(Statistics.year_started_working)
+    ages = get_aggregated_data(
+        Statistics.birthdate,
+        value=db.func.datediff(db.func.current_date(), Statistics.birthdate) / 365.25)
+    ages[1] = map(int, ages[1])
+
+
     return render_template(
         'charts.html',
         heights=json.dumps(heights),
+        weights=json.dumps(weights),
+        mobile_platforms=json.dumps(mobile_platforms),
+        sex=json.dumps(sex),
+        year_started_working=json.dumps(year_started_working),
+        ages=json.dumps(ages),
     )
 
 
