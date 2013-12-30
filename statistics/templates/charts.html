@@ -32,6 +32,37 @@ var footSizesData = {{ foot_sizes|safe }};
 
 <div id="container8" style="width: 800px; height: 400px; margin: 30px auto"></div>
 
+<style>
+  #names td {
+    padding-left: 30px;
+  }
+  #names td:first-child {
+    padding-left: 10px;
+  }
+  #names th:first-child {
+    width: 40%;
+  }
+  .man {
+    color: #197fb2;
+  }
+  .woman {
+    color: #f6c;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <table id="names" class="table">
+        <thead>
+          <th>Имя</th>
+          <th>Сколько человек</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="/static/js/highcharts.js"></script>
 <script src="/static/js/underscore.js"></script>
