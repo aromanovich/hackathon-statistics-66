@@ -48,6 +48,18 @@ def get_aggregated_by_sex_data(column):
         'maleData': male_data,
     }
 
+def get_statistics(column):
+    q = Statistics.query.group_by(
+        column
+    ).order_by(
+        column
+    )
+    
+    return [{
+        'sex': s.sex,
+        'data': getattr(s, str(column.name)),
+    } for s in q]
+
 
 def get_aggregated_data(column, value=None):
     """
@@ -66,7 +78,7 @@ def get_aggregated_data(column, value=None):
 
 @app.route('/charts/')
 def charts():
-    heights = get_aggregated_by_sex_data(Statistics.height)
+    heights = get_statistics(Statistics.height)
     weights = get_aggregated_by_sex_data(Statistics.weight)
     mobile_platforms = get_aggregated_data(Statistics.mobile_platform)
     sex = get_aggregated_data(Statistics.sex)
