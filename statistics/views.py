@@ -16,7 +16,8 @@ def index():
         form.populate_obj(statistics)
         db.session.add(statistics)
         db.session.commit()
-        return redirect(url_for('.finish'))
+        flash(u'Спасибо за заполнение анкеты!', category='success')
+        return redirect(url_for('.charts'))
 
     return render_template('survey.html', form=form)
 
@@ -112,4 +113,4 @@ def charts():
 @app.route('/finish/')
 def finish():
     flash(u'Спасибо за заполнение анкеты!')
-    return redirect('.charts')
+    return redirect(url_for('.charts'))
