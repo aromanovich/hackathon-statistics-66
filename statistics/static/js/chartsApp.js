@@ -177,7 +177,7 @@ $(function () {
                 }
             },
             tooltip: {
-                enabled: false;
+                enabled: false
 //                formatter: function() {
 //                    return 'Рост: '+ this.x + ' см <br> '+ this.series.name + ': '+ this.y;
 //                }
